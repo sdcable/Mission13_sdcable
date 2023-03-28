@@ -1,5 +1,3 @@
-import styles from "./first.module.css";
-
 function Navbar(props: any) {
   return (
     <div>
