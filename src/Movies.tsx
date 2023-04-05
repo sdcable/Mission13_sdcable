@@ -1,9 +1,24 @@
 import { useState, useEffect } from "react";
 import { Movie } from "./types/movies";
+import data from "./MovieData.json";
 
 function MovieList() {
-  const [listOMovies, setListOMovies] = useState<Movie[]>([]);
-
+  const MDS = data.MovieData;
+  //const [listOMovies, setListOMovies] = useState<Movie[]>([]);
+  const [listOMovies, setListOMovies] = useState(MDS);
+  const addMovie = () => {
+    setListOMovies([
+      ...MDS,
+      {
+        Category: "Action/Adventure",
+        Title: "Batman & Robin",
+        Year: 1997,
+        Director: "Joel Schumacher",
+        Rating: "PG-13",
+      },
+    ]);
+  };
+  /* 
   useEffect(() => {
     const fetchMovie = async () => {
       const rsp = await fetch("https://localhost:4000/Movie");
@@ -12,6 +27,7 @@ function MovieList() {
     };
     fetchMovie();
   }, []);
+  */
   //Above is what is used to pull the API
   //Below, we use mapping to allow the flexibility of it to come in.
   return (
