@@ -1,6 +1,6 @@
 import React from "react";
 import spencer from "./JoelHiltonHeadshot.jpg";
-
+//Home page that is a default page with Joel's picture.
 export const Home = () => (
   <div>
     <h1>Welcome to Joel's Website</h1>

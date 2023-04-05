@@ -1,24 +1,19 @@
-import { useState } from "react";
-import data from "./MovieData.json";
-
-const MDS = data.MovieData; //This is the name of the JSON object in the JSON file.
+import { useState, useEffect } from "react";
+import { Movie } from "./types/movies";
 
 function MovieList() {
-  const [listOMovies, setListOMovies] = useState(MDS);
+  const [listOMovies, setListOMovies] = useState<Movie[]>([]);
 
-  const addMovie = () => {
-    setListOMovies([
-      ...MDS,
-      {
-        Category: "Action/Adventure",
-        Title: "Batman returns",
-        Year: 1992,
-        Director: "Joel Schumacher",
-        Rating: "PG-13",
-      },
-    ]);
-  };
-
+  useEffect(() => {
+    const fetchMovie = async () => {
+      const rsp = await fetch("https://localhost:4000/Movie");
+      const temp = await rsp.json();
+      setListOMovies(temp);
+    };
+    fetchMovie();
+  }, []);
+  //Above is what is used to pull the API
+  //Below, we use mapping to allow the flexibility of it to come in.
   return (
     <>
       <div>
@@ -29,31 +24,35 @@ function MovieList() {
           <table className="table table-striped table-hover table-sm table-responsive">
             <thead className="table border">
               <tr>
+                <th>MovieId</th>
+                <th>Category</th>
                 <th>Title</th>
                 <th>Year</th>
                 <th>Director</th>
                 <th>Rating</th>
-                <th>Category</th>
+                <th>Edited</th>
+                <th>LentTo</th>
+                <th>Notes</th>
               </tr>
             </thead>
             <tbody className="table border">
               {listOMovies.map((m) => (
-                <tr>
-                  <td>{m.Title}</td>
-                  <td>{m.Year}</td>
-                  <td>{m.Director}</td>
-                  <td>{m.Rating}</td>
-                  <td>{m.Category}</td>
+                <tr key={m.movieId}>
+                  <td>{m.movieId}</td>
+                  <td>{m.category}</td>
+                  <td>{m.title}</td>
+                  <td>{m.year}</td>
+                  <td>{m.director}</td>
+                  <td>{m.rating}</td>
+                  <td>{m.edited}</td>
+                  <td>{m.lentTo}</td>
+                  <td>{m.notes}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </div>
-
-      <button className="btn btn-primary" onClick={addMovie}>
-        Add Batman
-      </button>
     </>
   );
 }
