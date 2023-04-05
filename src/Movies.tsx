@@ -24,35 +24,31 @@ function MovieList() {
           <table className="table table-striped table-hover table-sm table-responsive">
             <thead className="table border">
               <tr>
-                <th>MovieId</th>
-                <th>Category</th>
                 <th>Title</th>
                 <th>Year</th>
                 <th>Director</th>
                 <th>Rating</th>
-                <th>Edited</th>
-                <th>LentTo</th>
-                <th>Notes</th>
+                <th>Category</th>
               </tr>
             </thead>
             <tbody className="table border">
               {listOMovies.map((m) => (
-                <tr key={m.movieId}>
-                  <td>{m.movieId}</td>
-                  <td>{m.category}</td>
-                  <td>{m.title}</td>
-                  <td>{m.year}</td>
-                  <td>{m.director}</td>
-                  <td>{m.rating}</td>
-                  <td>{m.edited}</td>
-                  <td>{m.lentTo}</td>
-                  <td>{m.notes}</td>
+                <tr>
+                  <td>{m.Title}</td>
+                  <td>{m.Year}</td>
+                  <td>{m.Director}</td>
+                  <td>{m.Rating}</td>
+                  <td>{m.Category}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </div>
+
+      <button className="btn btn-primary" onClick={addMovie}>
+        Add Batman
+      </button>
     </>
   );
 }

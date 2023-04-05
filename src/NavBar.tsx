@@ -1,4 +1,3 @@
-//Navbar navigation looks like this!
 function Navbar(props: any) {
   return (
     <div>

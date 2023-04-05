@@ -1,4 +1,5 @@
 import React from "react";
+import spencer from "./JoelHiltonHeadshot.jpg";
 
 export const Podcasts = () => (
   <div>
