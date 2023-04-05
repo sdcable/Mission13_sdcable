@@ -7,7 +7,7 @@ import MovieList from "./Movies";
 import { Home } from "./Home";
 import NavBar from "./NavBar";
 import { Podcasts } from "./Podcasts";
-
+//test
 function App() {
   return (
     <BrowserRouter>
